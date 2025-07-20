@@ -1,15 +1,21 @@
-﻿namespace BMI
+﻿using BMI.ViewModels;
+using BMI.Views;
+
+namespace BMI
 {
     public partial class App : Application
     {
-        public App()
+        private readonly BMIViewModel viewModel;
+
+        public App(BMIViewModel viewModel)
         {
             InitializeComponent();
+            this.viewModel = viewModel;
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            return new Window(new BMIView(viewModel));
         }
     }
 }
