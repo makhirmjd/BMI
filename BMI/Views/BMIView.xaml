@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BMI.Views.BMIView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:gauge="clr-namespace:Syncfusion.Maui.Gauges;assembly=Syncfusion.Maui.Gauges"
+    xmlns:viewModels="clr-namespace:BMI.ViewModels"
+    Title="BMIView"
+    x:DataType="viewModels:BMIViewModel">
+    <ScrollView>
+        <ScrollView.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Offset="0.0" Color="#572375" />
+                <GradientStop Offset="1" Color="#a594f9" />
+            </LinearGradientBrush>
+        </ScrollView.Background>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25"
+            VerticalOptions="Center">
+            <!--#region Height-->
+            <Border
+                Padding="15"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout>
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="Height (cm)"
+                        TextColor="Gray" />
+                    <gauge:SfLinearGauge
+                        Margin="0,15,0,0"
+                        Interval="50"
+                        Maximum="250"
+                        Minimum="25">
+                        <gauge:SfLinearGauge.MarkerPointers>
+                            <gauge:LinearContentPointer
+                                x:Name="HeightPointer"
+                                IsInteractive="True"
+                                Position="Cross"
+                                Value="50">
+                                <gauge:LinearContentPointer.Content>
+                                    <Grid HeightRequest="25" WidthRequest="50">
+                                        <RoundRectangle CornerRadius="5" Fill="#ff0074E3" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Source={x:Reference HeightPointer}, Path=Value, StringFormat='{0:0}'}"
+                                            TextColor="White"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </gauge:LinearContentPointer.Content>
+                            </gauge:LinearContentPointer>
+                        </gauge:SfLinearGauge.MarkerPointers>
+                    </gauge:SfLinearGauge>
+                </VerticalStackLayout>
+            </Border>
+            <!--#endregion-->
+
+            <!--#region Weight-->
+            <Border
+                Padding="15"
+                BackgroundColor="White"
+                StrokeShape="RoundRectangle 10">
+                <VerticalStackLayout>
+                    <Label
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="Weight (kg)"
+                        TextColor="Gray" />
+                    <gauge:SfLinearGauge
+                        Margin="0,15,0,0"
+                        Maximum="150"
+                        Minimum="50">
+                        <gauge:SfLinearGauge.MarkerPointers>
+                            <gauge:LinearContentPointer
+                                x:Name="WeightPointer"
+                                IsInteractive="True"
+                                Position="Cross"
+                                Value="50">
+                                <gauge:LinearContentPointer.Content>
+                                    <Grid HeightRequest="25" WidthRequest="50">
+                                        <RoundRectangle CornerRadius="5" Fill="#ff0074E3" />
+                                        <Label
+                                            HorizontalOptions="Center"
+                                            Text="{Binding Source={x:Reference WeightPointer}, Path=Value, StringFormat='{0:0}'}"
+                                            TextColor="White"
+                                            VerticalOptions="Center" />
+                                    </Grid>
+                                </gauge:LinearContentPointer.Content>
+                            </gauge:LinearContentPointer>
+                        </gauge:SfLinearGauge.MarkerPointers>
+                    </gauge:SfLinearGauge>
+                </VerticalStackLayout>
+            </Border>
+            <!--#endregion-->
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
