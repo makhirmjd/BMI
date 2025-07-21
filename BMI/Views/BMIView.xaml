@@ -109,7 +109,7 @@
                     <gauge:SfRadialGauge>
                         <gauge:SfRadialGauge.Axes>
                             <gauge:RadialAxis
-                                Margin="0,-55,0,0"
+                                Margin="0,-45,0,0"
                                 Maximum="50"
                                 Minimum="0"
                                 ShowAxisLine="False"
